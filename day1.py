@@ -11,14 +11,6 @@ print("b的值是：" + str(type(b)) + str(b) + ",c的值是：" + str(type(c)) 
 restal = ('')
 print(bool(restal))
 
-a = '12'
-b = '23'
-print(a + b)
-a = input('Enter number of a:')
-b = input('Enter number of b:')
-print(a + b)
-print(int(a) + int(b))
-
 # 这里定义一个价格变化律
 ratio = 1.2
 price = 100 # 初始价格
