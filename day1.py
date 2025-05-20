@@ -1,6 +1,6 @@
 import math
-import requests
 import json
+
 
 a = 2
 print("a的3次方是：" + str(a ** 3))
