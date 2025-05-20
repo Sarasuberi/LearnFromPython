@@ -27,8 +27,8 @@ while running :
             result = sum / count
         print(f'Average:{result}')
     # 如果输入内容不是能识别的exit或者小于100的成绩，则提示用户重新输入
-    # elif str_input != range(0,100):
-    #   print('Someting was wrong ,Please enter the grade again')
+    elif int(str_input) > 100 :
+       print('Someting was wrong ,Please enter the grade again')
     else:
         grade = int(str_input)
         sum = sum + grade
