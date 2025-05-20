@@ -1,5 +1,12 @@
 import requests
 
+a = '12'
+b = '23'
+print(a + b)
+a = input('Enter number of a:')
+b = input('Enter number of b:')
+print(a + b)
+print(int(a) + int(b))
 
 score = input('Enter your score:')
 if int(score) >= 90:
