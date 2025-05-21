@@ -62,3 +62,53 @@ for ff in callable:
     print(ff)
 
 # %%
+name_list = ['Jack', 'Tom', 'Jerry']
+print(f'name_list:{name_list}')
+print(f'name_list[1]:{name_list[1]}')
+print(f'name_list[-1]:{name_list[-1]}')
+
+for name in name_list:
+    print(f'for in name:{name}')
+
+name_list.append('Tommy')  #扩充
+name_list.insert(1, 'Evan')  #插入
+del name_list[0]  #删除
+# name_list.pop()  #弹出
+# name_list.pop(0)  #弹出指定位置
+# name_list.remove('Evan')  #删除指定元素
+name_list[0] = 'Eve'  #修改
+print(f'name_list after change:{name_list}')
+
+# tuple是一个内容不能改变的list，定义tuple的时候使用（）
+# 节省性能，不能修改，不能删除，不能添加
+tuple_list = (0, 1, 2, 3, 4, 5)
+tuple_name = 6, 7, 8, 9
+print(type(tuple_name))
+print(tuple_list[1:3])
+print(tuple_list[2:])
+print(tuple_list[:3])
+print(max(tuple_list))
+print(min(tuple_list))
+print(tuple_list + tuple_name)
+print(tuple_name * 2)
+print(3 in tuple_name)
+
+age_list = [18, 20, 12, 55, 35, 12, 33, 40]
+print(age_list.sort())  #从小到大排序
+print(age_list.sort(reverse=True))  #从大到小排序
+students = [('Jack', 18), ('Tom', 20), ('Jerry', 12)]
+print(students.sort(key=lambda x: x[0]))  #按照名字排序
+print(students.sort(key=lambda x: x[1]))  #按照年龄排序
+print(sorted(students ,key=lambda x: x[1], reverse=True))  #新建一个list并按照年龄倒序排序
+
+nums = [3, 8, 6, 5]
+n1, n2, *n3 = nums  # *表示剩余的元素
+print(n1, n2, n3)
+
+for index, n in enumerate(nums, 1):
+    print(f'{index}-{n}')
+# 迭代器
+it = iter(nums)
+print(next(it))
+for n in it:
+    print(n)

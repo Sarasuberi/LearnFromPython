@@ -65,3 +65,17 @@ def f(n:int):
 
 f(int(fs))
 # %%
+
+# 让用户输入多个成绩，直到输入exit则结束。然后打印出平均成绩和所有高于平均值的成绩。
+scores = []
+while True:
+    score = input("请输入成绩,输入exit结束：")
+    if score == "exit":
+        break
+    scores.append(float(score))
+average_score = sum(scores) / len(scores)
+print("平均成绩为：", average_score)
+print("高于平均值的成绩有：")
+for score in scores:
+    if score > average_score:
+        print(score)
