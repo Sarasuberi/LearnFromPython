@@ -62,3 +62,19 @@ for s in student:
 for s in student.values():
     print(s)
 # %%
+# 字典解析
+# new_dict = {key: value for (key,value) in dict.items()}
+grades = {'Tom': 90, 'Jerry': 85, 'Jack': 95}
+new_grades = {name: int(grade * 1.1) for name, grade in grades.items()}
+print(f'字典解析：{new_grades}')
+above_90 = {name: grade for name, grade in grades.items() if grade > 90}
+print(f'带条件的字典解析：{above_90}')
+# 合并字典
+# new_dict = {**dict1, **dict2}
+student1 = {'name': 'Tom', 'gender': 'male', 'math': 90}
+ext = {'math': 78, 'english': 90}
+new_student_fist_student1 = {**student1, **ext}
+print(f'合并字典ext：{new_student_fist_student1}')
+new_student_fist_ext = {**ext, **student1}
+print(f'合并字典student1：{new_student_fist_ext}')
+# %%
