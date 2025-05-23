@@ -1,12 +1,14 @@
 import requests
 
-def price_grade_level(grade : int) -> str:
+
+def price_grade_level(grade: int) -> str:
     # grade是形参 传入进来的值是实参
     # ->str 方便阅读代码，表示返回值是字符串类型
     if grade >= 90:
         print('Excellent')
     else:
         return 'Pass'
+    return 'Fail'
 
 def display_grade_level(level):
     print(f'your grade level is {level}')
