@@ -7,7 +7,7 @@ def list_cvs():
     try:
         with open(FILENAEM, "r",newline='') as file_instance:
             csv_reader = csv.reader(file_instance)
-            print("\t".join(next(csv_reader)))
+            #print("\t".join(next(csv_reader)))
             for row in csv_reader:
                 print("\t".join(row))
 
