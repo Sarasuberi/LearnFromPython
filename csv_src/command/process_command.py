@@ -1,5 +1,6 @@
 from store.csv_store import save_data
 from common.name_def import SUBJECT_NAME_SET
+
 def process_list(data:dict):
     records = list(data.values())
     for record in records:
@@ -8,7 +9,6 @@ def process_list(data:dict):
         print(f"Math score: {record.get('math')}")
         print(f"English score: {record.get('english')}")
         print(" ")
-
 
 def process_add(data: dict):
     student_name = input("Please input the student name:")
@@ -35,7 +35,6 @@ def process_add(data: dict):
     else:
         print("Add failed.")
 
-
 def validate_score(subject:str):
     score = int(input(f"Please input the {subject} score:"))
     if score == "":
@@ -44,9 +43,28 @@ def validate_score(subject:str):
         return ValueError("Please enter right score")
     return score
 
-def process_edit(data:dict):
-    print("edit")
-
+def process_edit(data: dict):
+    student_name = input("Please input the student name:")
+    if student_name not in data:
+        print(f"Student:{student_name} not exist!")
+        return
+    elif student_name == "":
+        print("The student name cannot be empty.")
+        return
+    try:
+        subject = input(
+            "Please input the subject you want to edit (chinese, math, english):"
+        )
+        if subject == "":
+            print("Subject cannot be empty.")
+            return
+        if subject not in SUBJECT_NAME_SET:
+            print("Please enter the right subject name.")
+            return
+        data[student_name][subject] = validate_score(subject)
+        print("Edit finished.")
+    except Exception as e:
+        print(f"Edit error: {e}")
 
 def process_delete(data: dict):
     student_name = input("Please input the student name:")
@@ -56,8 +74,6 @@ def process_delete(data: dict):
         print(f'Delete student:{student_name} successfully!')
     else:
         print(f'Student:{student_name} not exist!')
-
-
 
 def process_average(data: dict):
     student_count = len(data)
