@@ -4,3 +4,8 @@
 /csv_src/store/__pycache__
 /csv_src/common/__pycache__
 /csv_src/command/__pycache__
+/example/__pycache__
+/example/build
+/example/dist
+/example/main.spec
+/*.csv
