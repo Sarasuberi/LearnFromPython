@@ -5,9 +5,11 @@ def process_list(data:dict):
     records = list(data.values())
     for record in records:
         print(record.get("name"))
-        print(f"Chinese score: {record.get('chinese')}")
-        print(f"Math score: {record.get('math')}")
-        print(f"English score: {record.get('english')}")
+        for course in SUBJECT_NAME_SET:
+            print(f"{course} score: {record.get(course)}")
+        # print(f"Chinese score: {record.get('chinese')}")
+        # print(f"Math score: {record.get('math')}")
+        # print(f"English score: {record.get('english')}")
         print(" ")
 
 def process_add(data: dict):
