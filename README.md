@@ -1,6 +1,11 @@
 # LearnFromPython
 # 跟着B站视频自学Python记录
-    B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC
+    up主：跟峰哥学编程
+        B站地址：https://space.bilibili.com/3461574561892826
+        DAY1-13 Python入门合集：https://www.bilibili.com/video/BV1hv411c7s2/?spm_id_from=333.1387.collection.video_card.click&vd_source=60ae7f95d1c728e8c4f0535ccd387762
+        DAY14-20 面向对象的Python编程合集：https://www.bilibili.com/video/BV1he4y1471a/?spm_id_from=333.1387.upload.video_card.click&vd_source=60ae7f95d1c728e8c4f0535ccd387762
+    Deepseek推荐视频
+        B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC
 
 ## DAY1      2025.5.18
 ### 1 Python的语法
@@ -76,9 +81,27 @@
 ### 43 访问文件夹
 ### 44 实战文件与文件夹的操作
 ### 45 pip和虚拟环境
-### 46 判断某两个对象是否相同is&isnot
-### 47 python的类型转换-自动类型转换
-### 48 python的数据检测方法type（）& bool（）& dict（）
-### 49 python的强制类型转换str（）& int（）& float（）
-### 50 python的强制类型转换list（）& tuple（）& set（） 
-### 51 用来判断一个对象是否是一个已知类型的函数isinstance（）
+
+## DAY14     2025.5.31
+### 46 初始面向对象的Python
+### 47 类变量
+### 48 实例变量与函数
+### 49 私有属性与函数
+### 50 类方法和静态方法
+### 51 常用的特殊方法
+
+## DAY15     2025.6.1
+### 52 property类
+### 53 #property装饰器
+### 54 只读property
+### 55 删除property
+### 56 类的继承
+### 57 方法重写
+### 58 抽象类
+### 59 枚举
+### 60 枚举别名和装饰器
+### 61 定制和扩展枚举
+### 62 多继承
+### 63 描述符
+### 64 __new__方法
+### 65 异常类
