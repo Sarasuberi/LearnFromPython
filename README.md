@@ -2,10 +2,14 @@
 # 跟着B站视频自学Python记录
     up主：跟峰哥学编程
         B站地址：https://space.bilibili.com/3461574561892826
-        DAY1-13 Python入门合集：https://www.bilibili.com/video/BV1hv411c7s2/?spm_id_from=333.1387.collection.video_card.click&vd_source=60ae7f95d1c728e8c4f0535ccd387762
-        DAY14-20 面向对象的Python编程合集：https://www.bilibili.com/video/BV1he4y1471a/?spm_id_from=333.1387.upload.video_card.click&vd_source=60ae7f95d1c728e8c4f0535ccd387762
+        DAY1-13 Python入门合集：https://space.bilibili.com/3461574561892826/lists/865380
+        DAY14-20 面向对象的Python编程合集：https://space.bilibili.com/3461574561892826/lists/865435
+        高级Python编程知识：https://space.bilibili.com/3461574561892826/lists/895263
+        Python单元测试：https://space.bilibili.com/3461574561892826/lists/935382
+
     Deepseek推荐视频
         B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC
+
 
 ## DAY1      2025.5.18
 ### 1 Python的语法
@@ -92,7 +96,7 @@
 
 ## DAY15     2025.6.1
 ### 52 property类
-### 53 #property装饰器
+### 53 @property装饰器
 ### 54 只读property
 ### 55 删除property
 
@@ -109,3 +113,10 @@
 ### 63 描述符
 ### 64 __new__方法
 ### 65 异常类
+
+## DAY18     2025.6.4
+## DAY19     2025.6.5
+## DAY20     2025.6.6
+## DAY21     2025.6.7
+## DAY22     2025.6.8
+# 以上时间，计划暂歇，复习一下之前学习内容并且完成《Python编程：从入门到实践》中的第一个项目
