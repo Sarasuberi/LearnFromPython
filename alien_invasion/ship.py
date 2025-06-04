@@ -5,8 +5,8 @@ class Ship:
     """管理飞船的类"""
 
     def __init__(self, ai_game):
+        
         # 初始化飞船并设置其初始位置
-
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
         self.seetings = ai_game.settings
@@ -50,16 +50,10 @@ class Ship:
         if self.moving_left and self.rect.left > 0:
             self.x -= self.seetings.ship_speed
 
-        # if self.moving_right:
-        # self.rect.centerx += 1
-        # if self.moving_left:
-        # self.rect.centerx -= 1
-        # if self.space:
-        # pass # 打算做发射子弹
-
         # 根据self.x更新rect对象
         self.rect.x = int(self.x)
 
     def blitme(self):
+        
         # 在指定位置绘制飞船
         self.screen.blit(self.image, self.rect)

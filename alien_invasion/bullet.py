@@ -25,6 +25,7 @@ class Bullet(Sprite):
 
         # 更新表示子弹位置的小数值
         self.y -= self.settings.bullet_speed
+        
         # 更新表示子弹的rect位置
         self.rect.y = self.y
 
