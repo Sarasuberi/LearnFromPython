@@ -37,7 +37,7 @@ class AlienInvasion:
             self._check_events()  # 监听键盘和鼠标事件
             self.ship.update()  # 更新飞船位置
             self._update_bullet()  # 更新子弹
-            self._create_fleet()  # 创建外星人
+            self._update_alien()    #更新外星人位置
             self._update_screen()  # 然后每次循环时都会重绘屏幕
 
     def _check_events(self):
@@ -103,12 +103,19 @@ class AlienInvasion:
 
     def _create_alien(self, num: int, num_row: int):
         """重构创建一行外星人的逻辑"""
+
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
         alien.x = alien_width + 2 * alien_width * num
         alien.rect.x = alien.x
         alien.rect.y = alien.rect.height + 2 * alien.rect.height * num_row
         self.aliens.add(alien)
+
+    def _update_alien(self):
+        """更新外星人群中所有外星人的位置"""
+        
+        self._create_fleet()  # 创建外星人
+        self.aliens.update()
 
     def _fire_bullet(self):
         """创建子弹，并且加入Group"""
