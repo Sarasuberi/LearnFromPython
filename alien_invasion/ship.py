@@ -1,11 +1,13 @@
 import pygame
+from pygame.sprite import Sprite
 
 
-class Ship:
+class Ship(Sprite):
     """管理飞船的类"""
 
     def __init__(self, ai_game):
-        
+        super().__init__()
+
         # 初始化飞船并设置其初始位置
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
@@ -28,11 +30,16 @@ class Ship:
         这些坐标对应的是游戏窗口，而不是物理屏幕
         '''
 
+        """
         # 将每艘新飞船放在屏幕底部中央
         self.rect.midbottom = self.screen_rect.midbottom
 
         # 在飞船的属性x中存储小数值
         self.x = float(self.rect.x)
+        """
+
+        # 合并上面的代码实现重复利用
+        self.center_ship()
 
         # 飞船移动标识符
         self.moving_right = False
@@ -57,3 +64,9 @@ class Ship:
         
         # 在指定位置绘制飞船
         self.screen.blit(self.image, self.rect)
+
+    def center_ship(self):
+        """绘制飞船在屏幕的底部中间"""
+
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
