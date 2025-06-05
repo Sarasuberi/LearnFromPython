@@ -13,32 +13,41 @@
 然后监听鼠标键盘操作，让玩家能够左右移动飞船。测试中发现会超出屏幕范围，需要一个边界检测。
 完成了以上内容之后就可以着手开始完成飞船的射击功能了。
 接着需要一个可以被射击的目标，也就是外星人的图像加载，并且需要让外星人移动起来。
-# 需要整点素材出来
+最后添加一个记分功能，让每一次游戏都有记录！
+
 ## 项目结构
 ```
-alien_invasion
-├── alien_invasion.py
-├── README.md
-├── settings.py
-└── ship.py
-└── images
-    └── ship.bmp
-    └── alien.bmp
-    └── background.bmp
-    └── bullet.bmp
-    └── button.bmp
-    └── gameover.bmp
-    └── pause.bmp
-    └── play.bmp
-└── bullet.py
-└── sounds
-    └── bullet.wav
-    └── explosion.wav
-    └── gameover.wav
-    └── laser.wav
-    └── move.wav
-    └── pause.wav
-    └── play.wav
-    └── start.wav
-    └── win.wav
+alien_invasion/
+|-- alien.py
+|-- alien_invasion.py
+|-- bullet.py
+|-- button.py
+|-- game_stats.py
+|-- settings.py
+|-- ship.py
+|-- scoreboard.py
+|-- sprite.py
+|-- README.md
 ```
+
+## 代码说明
+### alien.py
+定义了外星人类
+### alien_invasion.py
+游戏主程序
+### bullet.py
+定义了子弹类
+### button.py
+定义了按钮类
+### game_stats.py
+定义了游戏统计信息类
+### settings.py
+定义了游戏设置类
+### ship.py
+定义了飞船类
+### scoreboard.py
+定义了记分板类
+### sprite.py
+定义了精灵类
+### README.md
+项目说明文档
