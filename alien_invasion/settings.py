@@ -3,9 +3,8 @@ class Settings:
     储存一些游戏中的设置的类
     初始化游戏的设置
     """
-    def __init__(self,ai_game):
+    def __init__(self):
 
-        self.scoreboard = ai_game.scoreboard
         # 屏幕尺寸设置
         self.screen_width = 1200
         self.screen_height = 800
@@ -22,7 +21,7 @@ class Settings:
         self.ship_limit = 3
 
         # 子弹设置
-        self.bullet_width = 1200
+        self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
         self.bullet_allowed = 3

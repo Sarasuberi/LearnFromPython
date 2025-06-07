@@ -51,3 +51,5 @@ alien_invasion/
 定义了精灵类
 ### README.md
 项目说明文档
+### requirements.txt
+项目需要支持的库
