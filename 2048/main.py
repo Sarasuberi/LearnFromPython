@@ -5,6 +5,7 @@ import math
 from setting import Setting
 from game_start import GameStart
 from block import Block
+from copy import deepcopy
 
 # 游戏地图。[宽 X 高]
 gameMap = [[0 for _ in range(4)] for _ in range(4)]
@@ -67,68 +68,85 @@ class TwoBlock:
         elif event.key == pygame.K_ESCAPE:
             sys.exit()  # 按下Esc键，退出游戏
 
-    def _move_map(self,event):
+    def _move_map(self, event):
         """移动方块"""
+        global step, score, high_score
 
-        global step, score,high_score
+        # 深拷贝当前地图以比较移动后是否有变化
+        original_map = deepcopy(gameMap)
+        moved = False
+        merged_score = 0  # 本次移动的合并得分
 
-        # 检查本次按键是否移动了方块，移动则生成新方块
-        hasMoved = False
-        for process in range(len(gameMap[0]) -1):
-            for i in range(len(gameMap)):
-                for j in range(len(gameMap[0])):
-                    if gameMap[i][j] == 0:
-                        continue
+        # 根据移动方向选择遍历顺序和方向
+        if event == pygame.K_UP or event == pygame.K_DOWN:
+            # 垂直方向（上下）移动
+            for j in range(len(gameMap[0])):  # 遍历每一列
+                column = [gameMap[i][j] for i in range(len(gameMap))]  # 取出整列
 
-                    # 按下上键，上移
-                    if event == pygame.K_UP and i != 0 and gameMap[i][j] == gameMap[i - 1][j]:
-                        gameMap[i - 1][j] *= 2 # 上面的块的数值乘2
-                        score += gameMap[i - 1][j]
-                        gameMap[i][j] = 0
-                        hasMoved = True
-                    if event == pygame.K_UP and i != 0 and gameMap[i - 1][j] == 0: # 上方的块是0，则上移但不合并
-                        gameMap[i - 1][j] = gameMap[i][j]
-                        gameMap[i][j] = 0
-                        hasMoved = True
+                # 根据方向处理列
+                if event == pygame.K_UP:
+                    new_column, merged = self._slide_and_merge(column)
+                else:  # 向下
+                    new_column, merged = self._slide_and_merge(column[::-1])
+                    new_column = new_column[::-1]  # 反转回来
 
-                    # 按下下键，下移
-                    if event == pygame.K_DOWN and i != len(gameMap) - 1 and gameMap[i][j] == gameMap[i + 1][j]:
-                        gameMap[i + 1][j] *= 2
-                        score += gameMap[i + 1][j]
-                        gameMap[i][j] = 0
-                        hasMoved = True
-                    if event == pygame.K_DOWN and i != len(gameMap) - 1 and gameMap[i + 1][j] == 0:
-                        gameMap[i + 1][j] = gameMap[i][j]
-                        gameMap[i][j] = 0
-                        hasMoved = True
+                # 更新列并标记移动
+                if column != new_column:
+                    moved = True
+                    for i in range(len(gameMap)):
+                        gameMap[i][j] = new_column[i]
+                    merged_score += merged
 
-                    # 按下左键，左移
-                    if event == pygame.K_LEFT and j != 0 and gameMap[i][j] == gameMap[i][j - 1]:
-                        gameMap[i][j - 1] *= 2
-                        score += gameMap[i][j - 1]
-                        gameMap[i][j] = 0
-                        hasMoved = True
-                    if event == pygame.K_LEFT and j != 0 and gameMap[i][j - 1] == 0:
-                        gameMap[i][j - 1] = gameMap[i][j]
-                        gameMap[i][j] = 0
-                        hasMoved = True
+        elif event == pygame.K_LEFT or event == pygame.K_RIGHT:
+            # 水平方向（左右）移动
+            for i in range(len(gameMap)):  # 遍历每一行
+                row = gameMap[i][:]  # 复制整行
 
-                    # 按下右键，右移
-                    if event == pygame.K_RIGHT and j != len(gameMap[0]) - 1 and gameMap[i][j] == gameMap[i][j + 1]:
-                        gameMap[i][j + 1] *= 2
-                        score += gameMap[i][j + 1]
-                        gameMap[i][j] = 0
-                        hasMoved = True
-                    if event == pygame.K_RIGHT and j != len(gameMap[0]) - 1 and gameMap[i][j + 1] == 0:
-                        gameMap[i][j + 1] = gameMap[i][j]
-                        gameMap[i][j] = 0
-                        hasMoved = True
+                # 根据方向处理行
+                if event == pygame.K_LEFT:
+                    new_row, merged = self._slide_and_merge(row)
+                else:  # 向右
+                    new_row, merged = self._slide_and_merge(row[::-1])
+                    new_row = new_row[::-1]  # 反转回来
 
-        if hasMoved:
-            global step
+                # 更新行并标记移动
+                if row != new_row:
+                    moved = True
+                    gameMap[i] = new_row
+                    merged_score += merged
+
+        # 如果有移动且方块合并了
+        if moved:
             step += 1
+            score += merged_score  # 增加分数
+            if score > high_score:
+                high_score = score
             self._new_block()
 
+    def _slide_and_merge(self, tiles):
+        """滑动并合并一维数组中的方块"""
+        # 1. 删除空格子（0）
+        slides = [t for t in tiles if t != 0]
+
+        # 2. 合并相邻的相同方块
+        merged = 0  # 本次合并得分
+        slides2 = []
+        i = 0
+        while i < len(slides):
+            # 检查是否有两个相同的相邻方块可以合并
+            if i + 1 < len(slides) and slides[i] == slides[i + 1]:
+                slides2.append(slides[i] * 2)
+                merged += slides[i] * 2  # 记录得分
+                i += 2  # 跳过下一个元素（因为合并了）
+            else:
+                slides2.append(slides[i])
+                i += 1
+
+        # 3. 在末尾补充0（空格）
+        slides2.extend([0] * (len(tiles) - len(slides2)))
+
+        return slides2, merged
+    
     def _draw_bg(self):
         """画一个方块移动背景"""
 
@@ -249,7 +267,7 @@ class TwoBlock:
                 gameMap[block[0]][block[1]] = 4
             else:
                 gameMap[block[0]][block[1]] = 2
-            
+
 
     def _update_screen(self):
         """更新屏幕上的图像，并切换到新屏幕"""
