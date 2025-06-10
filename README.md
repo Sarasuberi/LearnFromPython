@@ -2,9 +2,9 @@
 # 跟着B站视频自学Python记录
     up主：跟峰哥学编程
         B站地址：https://space.bilibili.com/3461574561892826
-        DAY1-13 Python入门合集：https://space.bilibili.com/3461574561892826/lists/865380
-        DAY14-20 面向对象的Python编程合集：https://space.bilibili.com/3461574561892826/lists/865435
-        高级Python编程知识：https://space.bilibili.com/3461574561892826/lists/895263
+        DAY 1-13 Python入门合集：https://space.bilibili.com/3461574561892826/lists/865380
+        DAY 14-20 面向对象的Python编程合集：https://space.bilibili.com/3461574561892826/lists/865435
+        DAY 24 高级Python编程知识：https://space.bilibili.com/3461574561892826/lists/895263
         Python单元测试：https://space.bilibili.com/3461574561892826/lists/935382
 
     Deepseek推荐视频
@@ -121,4 +121,28 @@
 ### DAY20     2025.6.6
 ### DAY21     2025.6.7
 ### DAY22     2025.6.8
-# 以上时间，计划暂歇，复习一下之前学习内容并且完成《Python编程：从入门到实践》中的第一个项目
+### DAY23     2025.6.9
+#### 跟DeepSeek深度合作，完成了一个2048游戏
+
+## DAY24     2025.6.10
+### 1 装饰器
+### 2 生成器
+### 3 上下文管理器
+### 4 type类
+### 5 metaclass
+
+## DAY25     2025.6.11
+## DAY26     2025.6.12
+## DAY27     2025.6.13
+## DAY28     2025.6.14
+## DAY29     2025.6.15
+## DAY30     2025.6.16
+## DAY31     2025.6.17
+## DAY32     2025.6.18
+## DAY33     2025.6.19
+## DAY34     2025.6.20
+## DAY35     2025.6.21
+## DAY36     2025.6.22
+## DAY37     2025.6.23
+## DAY38     2025.6.24
+## DAY39     2025.6.25
