@@ -75,3 +75,27 @@
 # pip install -r requirements.txt --upgrade
 # 强制重新安装requirements.txt文件中的Package
 # pip install -r requirements.txt --upgrade --force-reinstall
+
+# pyinstaller工具
+# pyinstaller工具可以将Python程序打包成可执行文件。
+# 安装pyinstaller工具
+# pip install pyinstaller
+# 打包Python程序
+# pyinstaller <python程序的路径>
+# pyinstaller --onefile .\main.py --distpath .\dist --workpath .\build --specpath .\spec --clean --add-data .\data\*.txt;.data --add-binary .\data\*.png;.data --add-binary .\data\*.jpg;.data --add-binary .\data\*.exe;.data
+# --onefile: 将所有文件打包成一个可执行文件
+# --windowed: 不显示控制台窗口(GUI程序)
+# --name: 指定输出文件名    None
+# --icon: 指定可执行文件的图标，格式为<图标文件路径>    None
+# --debug: 生成调试版本     None
+# --distpath: 指定打包后的可执行文件的存放路径  None
+# --workpath: 指定打包过程中的临时文件的存放路径    None
+# --specpath: 指定打包过程中的spec文件的存放路径    None
+# --clean: 清理打包过程中的临时文件 None
+# --add-data: 指定需要打包的数据文件，格式为<源文件路径>:<目标文件路径>     None
+# --add-binary: 指定需要打包的二进制文件，格式为<源文件路径>:<目标文件路径>     None
+# --hidden-import: 指定需要导入的模块，格式为<模块名>   None
+# --exclude-module: 指定需要排除的模块，格式为<模块名>  None
+# --version-file: 指定可执行文件的版本信息，格式为<版本信息文件路径>    None
+# --noconfirm: 不提示确认信息   None
+# --noicon: 不显示图标  None
