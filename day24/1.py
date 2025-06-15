@@ -12,7 +12,7 @@ from functools import wraps
 #         return fn(*args, **kwargs)
 #     return wrapper
 
-def welcome(name:str)-> None:
+def welcome(name:str):
     def decorator(fn):
         @wraps(fn)
         def wrapper(*args, **kwargs):
