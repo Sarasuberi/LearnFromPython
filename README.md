@@ -4,8 +4,8 @@
         B站地址：https://space.bilibili.com/3461574561892826
         DAY 1-13 Python入门合集：https://space.bilibili.com/3461574561892826/lists/865380
         DAY 14-20 面向对象的Python编程合集：https://space.bilibili.com/3461574561892826/lists/865435
-        DAY 24 高级Python编程知识：https://space.bilibili.com/3461574561892826/lists/895263
-        Python单元测试：https://space.bilibili.com/3461574561892826/lists/935382
+        DAY 24-29 高级Python编程知识：https://space.bilibili.com/3461574561892826/lists/895263
+        DAY 31-36 Python单元测试：https://space.bilibili.com/3461574561892826/lists/935382
 
     Deepseek推荐视频
         B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC
@@ -162,13 +162,29 @@
 
 ## DAY30     2025.6.16
 ## DAY31     2025.6.17
+### 休息两天
+
 ## DAY32     2025.6.18
-### 暂定休息两天
+### 1.单元测试基础
+### 2.断言函数
 
 ## DAY33     2025.6.19
+### 3.Text Fixtures
+### 4.Mock
+
 ## DAY34     2025.6.20
+### 5.patch
+### 6.测试实例
+
 ## DAY35     2025.6.21
+### 7.测试覆盖率
+### 8.PyTest框架
+
 ## DAY36     2025.6.22
+### 9.PyTest fixture基础
+### 10.conftest.py
+### 11.参数化测试用例
+
 ## DAY37     2025.6.23
 ## DAY38     2025.6.24
 ## DAY39     2025.6.25
