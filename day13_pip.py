@@ -109,3 +109,5 @@
 # nosetests -v tests/*
 # 运行所有的测试文件并生成测试覆盖率报告
 # nosetests --with-coverage --cover-erase -v tests/*
+# 运行coverage工具
+# coverage run --help
