@@ -99,3 +99,13 @@
 # --version-file: 指定可执行文件的版本信息，格式为<版本信息文件路径>    None
 # --noconfirm: 不提示确认信息   None
 # --noicon: 不显示图标  None
+
+# 单元测试工具
+# pip install nose
+# pip install coverage
+# 运行一个测试文件
+# python3 -m unittest -v tests.basic.test_calculator
+# 运行所有的测试文件
+# nosetests -v tests/*
+# 运行所有的测试文件并生成测试覆盖率报告
+# nosetests --with-coverage --cover-erase -v tests/*
