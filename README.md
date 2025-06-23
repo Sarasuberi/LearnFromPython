@@ -8,7 +8,7 @@
         DAY 31-36 Python单元测试：https://space.bilibili.com/3461574561892826/lists/935382
 
     Deepseek推荐视频
-        B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC
+        DAY 37 B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC
 
 
 ## DAY1      2025.5.18
@@ -186,5 +186,41 @@
 ### 11.参数化测试用例
 
 ## DAY37     2025.6.23
+### 47.判断某两个对象是否相同is&isnot
+### 48.自动类型转换
+### 49.检测方法type()
+### 50.强制类型转换str()
+### 51.强制类型转换int()&float()
+### 52.强制类型转换bool()
+### 53.强制类型转换list()
+### 54.强制类型转换turple()
+### 55.强制类型转换set()
+### 56.强制类型转换dict()
+### 56.判断一个对象是否是已知isinstance()
+### 57.Python的条件语句if
+### 58.Python的条件语句if - 2
+### 59.Python的for循环
+### 60.Python的for循环 - 2
+### 61.双层for循环提取嵌套列表中的元素
+### 62.Python的while循环
+### 63.break和continue关键字在for循环中的使用
+### 64.break和continue关键字在while循环中的使用
+### 65.pass语句
+
 ## DAY38     2025.6.24
+### 66.Python函数的创建及调用以及参数传递
+### 67.Python函数的位置参数
+### 68.Python函数的默认参数
+### 69.Python的关键字参数
+### 70.Python命名关键字参数
+### 71.Python的可变参数星号加参数
+### 72.Python的可变参数双星号加参数
+### 73.Python参数解包
+### 74.参数的解包
+### 75.参数解包和可变参数配合使用
+### 76.Python函数中各种参数排列的事项
+### 77.Python的return关键字
+### 78.函数的返回函数
+
 ## DAY39     2025.6.25
+### 1.0 Numpy库的基本介绍与安装
