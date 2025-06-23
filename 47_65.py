@@ -22,7 +22,7 @@ print(f is g)
 print(f is not g)
 
 aa = {"名字": "慕舟"}
-bb = aa # {"名字": "慕舟"}
+bb = aa  # {"名字": "慕舟"}
 print("Dict:")
 print(aa is bb)
 print(aa is not bb)
@@ -33,32 +33,32 @@ print(aa is not bb)
 # 精度等级：布尔 < 整数 < 浮点数
 
 a = 10
-b = True    # 代表数字1
-print(a + b)    # 11
+b = True  # 代表数字1
+print(a + b)  # 11
 
 c = 10
 d = 3.14
-print(c + d)    # 13.14
+print(c + d)  # 13.14
 
 # %%
 # 检测方法type()
 
 a = "123"
 b = 123
-c = [1,2,3]
-d = (1,2,3)
-e = {1,2,3}
+c = [1, 2, 3]
+d = (1, 2, 3)
+e = {1, 2, 3}
 f = {"名字": "慕舟", "年龄": 18, "性别": "男"}
 g = True
 h = 3.14
-print(a)    # 123
-print(b)    # 123
-print(c)    # [1,2,3]
-print(d)    # (1,2,3)
-print(e)    # {1,2,3}
-print(f)    # {'名字': '慕舟', '性别': '男', '年龄': 18}
-print(g)    # True
-print(h)    # 3.14
+print(a)  # 123
+print(b)  # 123
+print(c)  # [1,2,3]
+print(d)  # (1,2,3)
+print(e)  # {1,2,3}
+print(f)  # {'名字': '慕舟', '性别': '男', '年龄': 18}
+print(g)  # True
+print(h)  # 3.14
 print(type(a))  # <class 'str'> -> 数据是字符串类型
 print(type(b))  # <class 'int'> -> 数据是整数类型
 print(type(c))  # <class 'list'> -> 数据是列表类型
@@ -81,7 +81,7 @@ e = {1, 2, 3}
 f = {"名字": "慕舟", "年龄": 18, "性别": "男"}
 g = True
 h = 3.14
-print(str(a))    # 123
+print(str(a))  # 123
 str_b = str(b)
 print(str_b, type(str_b))  # 123 , <class 'str'>
 str_c = str(c)
@@ -97,8 +97,7 @@ str_g = str(g)
 print(str_g, type(str_g))  # True , <class 'str'>
 str_h = str(h)
 print(str_h, type(str_h))  # 3.14 , <class 'str'>
-print(str([1,2,3]))    # 实际上是"[1, 2, 3]"这样的字符串
-
+print(str([1, 2, 3]))  # 实际上是"[1, 2, 3]"这样的字符串
 
 # %%
 # 强制类型转换int()&float()
@@ -113,11 +112,11 @@ d = "123"
 e = "12.21"
 rueslt_a = float(a)
 print(rueslt_a)
-rueslt_b = int(b)   # 不遵守四舍五入
+rueslt_b = int(b)  # 不遵守四舍五入
 print(rueslt_b)
-rueslt_int_c = int(c)   # True -> 1, False -> 0
+rueslt_int_c = int(c)  # True -> 1, False -> 0
 print(rueslt_int_c)
-rueslt_float_c = float(c)   # True -> 1.0, False -> 0.0
+rueslt_float_c = float(c)  # True -> 1.0, False -> 0.0
 print(rueslt_float_c)
 rueslt_d = int(d)
 print(rueslt_d, type(rueslt_d))  # 123 <class 'int'>
@@ -139,21 +138,22 @@ print(rueslt_float_e, type(rueslt_float_e))  # 12.21 <class 'float'>
 # float类型中，0.0为False，其他为真
 # 空格也被视为是一个字符
 
-a = ""      # 空字符串
-b = []      # 空列表
-c = ()      # 空元祖
-d = {}      # 空字典
-e = set()   # 空集合
-print(bool(a),bool(b),bool(c),bool(d),bool(e))   # False False False False False
+a = ""  # 空字符串
+b = []  # 空列表
+c = ()  # 空元祖
+d = {}  # 空字典
+e = set()  # 空集合
+print(bool(a), bool(b), bool(c), bool(d),
+      bool(e))  # False False False False False
 bb = [123]
-print(bool(bb))   # True
+print(bool(bb))  # True
 
 aa = 0
 bb = 0.0
-print(bool(aa),bool(bb))   # False False
+print(bool(aa), bool(bb))  # False False
 cc = 233
 dd = 3.14
-print(bool(cc),bool(dd))   # True True
+print(bool(cc), bool(dd))  # True True
 
 # %%
 # 强制类型转换list()
@@ -165,14 +165,14 @@ print(bool(cc),bool(dd))   # True True
 
 a = 123
 b = "123"
-c = (1,2,3)
-d = {"名字": "慕舟", 0: 18, (1,2,3): "男"}
-e = {1,2,3,"a","b","c"}
-print(list(a))    # TypeError: 'int' object is not iterable
-print(list(b))    # ['1', '2', '3']
-print(list(c))    # [1, 2, 3]
-print(list(d))    # ['名字', '年龄', '性别']
-print(list(e))    # ['c', 1, 2, 3, 'b', 'a']
+c = (1, 2, 3)
+d = {"名字": "慕舟", 0: 18, (1, 2, 3): "男"}
+e = {1, 2, 3, "a", "b", "c"}
+print(list(a))  # TypeError: 'int' object is not iterable
+print(list(b))  # ['1', '2', '3']
+print(list(c))  # [1, 2, 3]
+print(list(d))  # ['名字', '年龄', '性别']
+print(list(e))  # ['c', 1, 2, 3, 'b', 'a']
 
 # %%
 # 强制类型转换turple()
@@ -185,14 +185,14 @@ print(list(e))    # ['c', 1, 2, 3, 'b', 'a']
 
 a = 123
 b = "123"
-c = [1,2,3]
-d = {"名字": "慕舟", 0: 18, (1,2,3): "男"}
-e = {1,2,3,"a","b","c"}
-print(tuple(a))    # TypeError: 'int' object is not iterable
-print(tuple(b))    # ('1', '2', '3')
-print(tuple(c))    # (1, 2, 3)
-print(tuple(d))    # ('名字', 0, (1, 2, 3))
-print(tuple(e))    # ('c', 1, 2, 3, 'b', 'a')
+c = [1, 2, 3]
+d = {"名字": "慕舟", 0: 18, (1, 2, 3): "男"}
+e = {1, 2, 3, "a", "b", "c"}
+print(tuple(a))  # TypeError: 'int' object is not iterable
+print(tuple(b))  # ('1', '2', '3')
+print(tuple(c))  # (1, 2, 3)
+print(tuple(d))  # ('名字', 0, (1, 2, 3))
+print(tuple(e))  # ('c', 1, 2, 3, 'b', 'a')
 
 # %%
 # 强制类型转换set()
@@ -205,14 +205,14 @@ print(tuple(e))    # ('c', 1, 2, 3, 'b', 'a')
 
 a = 123
 b = "123456"
-c = [1,2,3]
-d = {"名字": "慕舟", 0: 18, (1,2,3): "男"}
-e = {1,2,3,"a","b","c"}
-print(set(a))    # TypeError: 'int' object is not iterable
+c = [1, 2, 3]
+d = {"名字": "慕舟", 0: 18, (1, 2, 3): "男"}
+e = {1, 2, 3, "a", "b", "c"}
+print(set(a))  # TypeError: 'int' object is not iterable
 print(set(b))  # {'4', '5', '3', '2', '6', '1'}
-print(set(c))    # {1, 2, 3}
-print(set(d))    # {0, '名字', (1, 2, 3)}
-print(set(e))    # {'c', 1, 2, 3, 'b', 'a'}
+print(set(c))  # {1, 2, 3}
+print(set(d))  # {0, '名字', (1, 2, 3)}
+print(set(e))  # {'c', 1, 2, 3, 'b', 'a'}
 
 # %%
 # 强制类型转换dict()
@@ -225,18 +225,18 @@ print(set(e))    # {'c', 1, 2, 3, 'b', 'a'}
 
 a = 123
 b = "123321"
-c = [1,2,3,"abc","你好"]
-cc = [[1,2],["a","b"],["你","好"]]
+c = [1, 2, 3, "abc", "你好"]
+cc = [[1, 2], ["a", "b"], ["你", "好"]]
 d = (1, 2, 3, "abc", "你好")
 dd = ((1, 2), ("a", "b"), ("你", "好"))
-e = {1,2,3,"a","b","c"}
-ee = {{1,2},{"a","b"},{"你","好"}}
+e = {1, 2, 3, "a", "b", "c"}
+ee = {{1, 2}, {"a", "b"}, {"你", "好"}}
 # print(dict(a))    # TypeError: 'int' object is not iterable
 # print(dict(b))    # dictionary update sequence element #0 has length 1; 2 is required
 # print(dict(c))    # cannot convert dictionary update sequence element #0 to a sequence
-print(dict(cc))     # {1: 2, 'a': 'b', '你': '好'}
+print(dict(cc))  # {1: 2, 'a': 'b', '你': '好'}
 # print(dict(d))    # cannot convert dictionary update sequence element #0 to a sequence
-print(dict(dd))     # {1: 2, 'a': 'b', '你': '好'}
+print(dict(dd))  # {1: 2, 'a': 'b', '你': '好'}
 # print(dict(e))    # TypeError: unhashable type: 'set'
 # print(dict(ee))   # TypeError: unhashable type: 'set'
 
@@ -251,24 +251,24 @@ a = 123
 b = 3.14
 c = "123"
 d = True
-e = [1,2,3]
+e = [1, 2, 3]
 f = {"名字": "慕舟", "性别": "男", "年龄": 18}
-g = {1,2,3}
-h = (1,2,3)
-print(isinstance(a, int))    # True
+g = {1, 2, 3}
+h = (1, 2, 3)
+print(isinstance(a, int))  # True
 print(isinstance(b, float))  # True
-print(isinstance(c, str))    # True
-print(isinstance(d, bool))   # True
-print(isinstance(e, list))   # True
-print(isinstance(f, dict))   # True
-print(isinstance(g, set))    # True
+print(isinstance(c, str))  # True
+print(isinstance(d, bool))  # True
+print(isinstance(e, list))  # True
+print(isinstance(f, dict))  # True
+print(isinstance(g, set))  # True
 print(isinstance(h, tuple))  # True
 
 # %%
 # Python的条件语句if
-if 3>6:
+if 3 > 6:
     print("hello world")
-elif 3>6:
+elif 3 > 6:
     print("ni hao")
 else:
     print("bye bye")
@@ -290,7 +290,7 @@ for x in range(1, 10):
 # %%
 # 双层for循环提取嵌套列表中的元素
 
-a = [[1,2,3],[4,5,6],[7,8,9]]
+a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 for i in a:
     for j in i:
         print(j)
@@ -307,23 +307,26 @@ while True:
 
 for i in range(10):
     if i == 2:
-      print(i)
-      continue
+        print(i)
+        continue
     elif i == 5:
-      break
+        break
 
 # %%
 # break和continue关键字在while循环中的使用
 while True:
     for i in range(10):
-      if i == 2:
+        if i == 2:
             print(i)
             continue
-      elif i == 5:
+        elif i == 5:
             break
-      
+
+
 # %%
 # pass语句
 def main():
     pass
+
+
 # %%
