@@ -112,12 +112,52 @@
 # 运行coverage工具
 # coverage run --help
 
-# Python中比较好用的第三方库
+# Python标准库
+# os: 提供了与操作系统交互的函数，如文件操作、目录操作、环境变量操作等
+# sys: 提供了与Python解释器交互的函数，如命令行参数、标准输入输出等
+# datetime: 提供了日期和时间相关的函数，如日期时间的创建、格式化、解析等
+# time: 提供了时间相关的函数，如时间戳、时间间隔、时间格式化等
+# json: 提供了JSON数据的解析和生成功能
+# csv: 提供了CSV文件的读写功能
+# re: 提供了正则表达式的匹配和替换功能
+# hashlib: 提供了哈希算法的实现，如MD5、SHA1等
+# file: 提供了文件操作的功能，如文件的打开、读取、写入等
+# math: 提供了数学运算的功能，如三角函数、对数函数等
+# random: 提供了随机数生成的功能
+
+# 第三方库--网络爬虫
 # requests: 用于发送HTTP请求的库
 # beautifulsoup4: 用于解析HTML和XML的库
 # selenium: 用于自动化测试的库
 # scrapy: 用于爬虫的库
-# pandas: 数据分析工具包，基于numpy构建，纳入了大量的库和标准数据模型。官方文档：https://pandas.pydata.org/docs/reference/index.html#api
+# urllib: 用于发送HTTP请求的库
+# urllib3: 用于发送HTTP请求的库
+# http.client: 用于发送HTTP请求的库
+# http.server: 用于创建HTTP服务器的库
+# socket: 用于网络编程的库
+# ssl: 用于SSL/TLS加密的库
+
+# 第三方库--科学运算基础模块
 # numpy: 用于科学计算的库，支持大量的维度数组和矩阵运算。官方文档：https://numpy.org/doc/stable/reference/index.html#other-topics
 # matplotlib: 专门用来绘图的工具包，用于数据可视化的库
+# pandas: 数据分析工具包，基于numpy构建，纳入了大量的库和标准数据模型。官方文档：https://pandas.pydata.org/docs/reference/index.html#api
 # scipy: 集成了数学、科学和工程学中常用的算法的库，它用于有效计算numpy矩阵使numpy和scipy协同工作
+
+# 第三方库--机器学习
+# scikit-learn: 机器学习库，基于numpy、scipy和matplotlib构建，提供了大量的机器学习算法和工具。有6搭基本功能：分类、回归、聚类、数据降维、模型选择和数据预处理。官方文档：https://scikit-learn.org/stable/modules/classes.html
+# OpenCV: 计算机视觉库，提供了大量的计算机视觉算法和工具。如图像视频加载、基础特征获取、边检检测等处理图像通常都需要其支持。官方文档：https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html
+# NLTK: 自然语言处理库，提供了大量的自然语言处理算法和工具。官方文档：https://www.nltk.org/book/
+# Gensim: 用于主题建模和文档相似性分析的工具包。官方文档：https://radimrehurek.com/gensim/models/ldamodel.html
+
+# 第三方库--深度学习平台
+# TensorFlow: Google开源的深度学习平台，支持多种深度学习算法和工具。相对成熟、应用广泛、服务全面、提供学习视频和其认证计划。官方文档：https://www.tensorflow.org/api_docs/python/tf
+# PyTorch: Facebook开源的深度学习平台，支持多种深度学习算法和工具。支持更加快速地构建项目。官方文档：https://pytorch.org/docs/stable/index.html
+# Keras: 高级神经网络API，用于快速构建和训练深度学习模型。官方文档：https://keras.io/api/
+# MXNet: Apache开源的深度学习平台，支持多种深度学习算法和工具。官方文档：https://mxnet.apache.org/api/python/docs/api/index.html
+# PaddlePaddle: 百度开源的深度学习平台，支持多种深度学习算法和工具。中文文档全面，对于汉语的相关模型比较丰富。官方文档：https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/index_cn.html
+
+
+# 第三方库--Web开发
+# Django: 一个高级的Web框架，用于快速开发Web应用和网站。官方文档：https://docs.djangoproject.com/zh-hans/3.2/
+# Flask: 一个轻量级的Web框架，用于快速开发Web应用和网站。官方文档：https://flask.palletsprojects.com/en/2.0.x/
+# Tornado: 一个异步Web框架，用于开发高性能的Web应用和网站。官方文档：https://www.tornadoweb.org/en/stable/
