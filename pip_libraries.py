@@ -111,3 +111,13 @@
 # nosetests --with-coverage --cover-erase -v tests/*
 # 运行coverage工具
 # coverage run --help
+
+# Python中比较好用的第三方库
+# requests: 用于发送HTTP请求的库
+# beautifulsoup4: 用于解析HTML和XML的库
+# selenium: 用于自动化测试的库
+# scrapy: 用于爬虫的库
+# pandas: 数据分析工具包，基于numpy构建，纳入了大量的库和标准数据模型。官方文档：https://pandas.pydata.org/docs/reference/index.html#api
+# numpy: 用于科学计算的库，支持大量的维度数组和矩阵运算。官方文档：https://numpy.org/doc/stable/reference/index.html#other-topics
+# matplotlib: 专门用来绘图的工具包，用于数据可视化的库
+# scipy: 集成了数学、科学和工程学中常用的算法的库，它用于有效计算numpy矩阵使numpy和scipy协同工作
