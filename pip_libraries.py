@@ -145,6 +145,7 @@
 
 # 第三方库--机器学习
 # scikit-learn: 机器学习库，基于numpy、scipy和matplotlib构建，提供了大量的机器学习算法和工具。有6搭基本功能：分类、回归、聚类、数据降维、模型选择和数据预处理。官方文档：https://scikit-learn.org/stable/modules/classes.html
+# pip install scikit-learn
 # OpenCV: 计算机视觉库，提供了大量的计算机视觉算法和工具。如图像视频加载、基础特征获取、边检检测等处理图像通常都需要其支持。官方文档：https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html
 # NLTK: 自然语言处理库，提供了大量的自然语言处理算法和工具。官方文档：https://www.nltk.org/book/
 # Gensim: 用于主题建模和文档相似性分析的工具包。官方文档：https://radimrehurek.com/gensim/models/ldamodel.html
