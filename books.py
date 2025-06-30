@@ -3,10 +3,18 @@ from bs4 import BeautifulSoup
 import requests
 import time
 import lxml
+import re
+from datetime import datetime
+from loguru import logger
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from urllib.parse import urljoin
 
+
+# 添加到文件
+dateTime = datetime.now().strftime("%Y-%m-%d")
+logger.remove()
+logger.add(f"loginfo\{dateTime}.log", level="info",rotation="100 MB", retention="10 days", compression="zip", enqueue=True)
 
 # 创建带重试的session
 def create_session():
@@ -152,8 +160,13 @@ def getValueList(url, selector_list, session):
 
 
 def getAllValue(urlList, selector_list, base_url, session):
+
+    # 准备一些参数
     start_time = time.time()
     result = ""
+    zjName_list = []
+
+    # 开始获取章节内容
     for zjName in urlList:
         if not zjName.get('href'):
             print(f"章节缺少链接: {zjName.text}")
@@ -161,7 +174,6 @@ def getAllValue(urlList, selector_list, base_url, session):
 
         # 构建完整URL
         full_url = urljoin(base_url, zjName['href'])
-        zjName_list = []
         if zjName.text not in zjName_list:
             print(f"开始获取: {zjName.text} ({full_url})")
 
@@ -203,11 +215,50 @@ def saveFile(fileName, fileValue):
     print(f"文件已保存: {fileName}")
 
 
+# 文本格式化函数：根据标点符号进行合理换行
+def format_text(text):
+    """
+    根据中文标点符号进行格式化换行
+    处理规则：
+    1. 在句尾标点（。！？）后换行
+    2. 在右引号」"）后换行
+    3. 保留原有的段落换行
+    4. 合并多余的空行
+    """
+    if not text:
+        return ""
+
+    # 第一步：在标准标点后添加换行
+    formatted = re.sub(r'([。！？…”」])("?"?)\s*', r'\1\2\n', text)
+
+    # 第二步：处理特殊的标点组合
+    # 处理 。" 组合
+    formatted = re.sub(r'。"\n', '。"\n\n', formatted)
+    # 处理 ！" 组合
+    formatted = re.sub(r'！"\n', '！"\n\n', formatted)
+    # 处理 ？" 组合
+    formatted = re.sub(r'？"\n', '？"\n\n', formatted)
+
+    # 第三步：合并多个连续换行
+    formatted = re.sub(r'\n{3,}', '\n\n', formatted)
+
+    # 第四步：确保章节标题后的空行
+    # 在章节标题后添加一个空行（如果还没有）
+    formatted = re.sub(r'(\n第[^章节]*[章节]\s*.*?)\n(\s*\n)*', r'\1\n\n',
+                       formatted)
+
+    # 第五步：处理对话格式
+    # 确保对话前有空行
+    formatted = re.sub(r'(\n)([「"])(.*?)([」"])\n', r'\1\n\2\3\4\n', formatted)
+
+    return formatted.strip()
+
 def main():
     # 主URL和基础URL
     # url = "https://www.3yt.org/ml/94328"  # 快穿系统之反派BOSS来袭
     # url = "https://www.3yt.org/ml/63543"  # 快穿：男神，有点燃
     # url = "https://www.3yt.org/ml/172981" # 欢迎来到我的地域
+    # url = "https://www.3yt.org/ml/87750/" # 快穿女配：反派BOSS有毒
     url = "https://www.3yt.org/ml/268476/"
     base_url = url.rsplit('/', 1)[0] + '/'  # 获取基础URL
 
@@ -236,6 +287,9 @@ def main():
     deplete_time = end_time - start_time
     print(f"获取所有章节总耗时: {deplete_time:.2f} 秒")
     print(f"获取所有章节总字数: {deplete_time / 60:.2f} 分钟")
+
+    # 格式化文本
+    jzValue = format_text(jzValue)
 
     # 保存结果
     if jzValue:
