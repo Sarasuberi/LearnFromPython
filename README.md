@@ -7,8 +7,9 @@
         DAY 24-29 高级Python编程知识：https://space.bilibili.com/3461574561892826/lists/895263
         DAY 31-36 Python单元测试：https://space.bilibili.com/3461574561892826/lists/935382
 
-    Deepseek推荐视频
-        DAY 37 B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC
+    ~~Deepseek推荐视频~~
+       ~~ DAY 37 B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC~~
+    这个合集有毒
 
 
 ## DAY1      2025.5.18
@@ -247,14 +248,19 @@
 ### 5.1.2 numpy二维数组的布尔索引和数据清洗
 
 ## DAY40     2025.6.26
+## DAY41     2025.6.27
+## DAY42     2025.6.28
+## DAY43     2025.6.29
 # 迷茫看视频中，2倍速快速看重复内容
 # 如果后面没有什么内容的话找个爬虫的书先看着
 # 熟练之后再爬点数据来学numpy和pandas
 
-## DAY41     2025.6.27
-## DAY42     2025.6.28
-## DAY43     2025.6.29
 ## DAY44     2025.6.30
+### 第三方日志loguro 
+    https://www.bilibili.com/video/BV1VnW7edEq7/
+### 文档
+    https://loguru.readthedocs.io/en/stable/api.html
+    
 ## DAY45     2025.7.1
 ## DAY46     2025.7.2
 ## DAY47     2025.7.3
