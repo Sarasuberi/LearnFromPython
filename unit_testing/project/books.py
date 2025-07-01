@@ -1,23 +1,24 @@
-# coding=utf-8
-from bs4 import BeautifulSoup
-import requests
+"""这是个爬虫软件"""
 import time
-import lxml
 import re
-from datetime import datetime
-from loguru import logger
+from urllib.parse import urljoin
+from bs4 import BeautifulSoup
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from urllib.parse import urljoin
+import requests
 
 
-# 添加到文件
-dateTime = datetime.now().strftime("%Y-%m-%d")
-logger.remove()
-logger.add(f"loginfo\{dateTime}.log", level="info",rotation="100 MB", retention="10 days", compression="zip", enqueue=True)
+HEADERS = {
+            'User-Agent':
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64)\
+                AppleWebKit/537.36 (KHTML, like Gecko)\
+                Chrome/91.0.4472.124 Safari/537.36',
+            'Referer': 'https://www.3yt.org/'
+        }
 
-# 创建带重试的session
 def create_session():
+    """创建带重试的session"""
+
     session = requests.Session()
     retry = Retry(total=3,
                   backoff_factor=0.5,
@@ -27,24 +28,18 @@ def create_session():
     session.mount('https://', adapter)
     return session
 
-
-# 通用选择器方案
 def find_content(soup, selectors):
+    """通用选择器方案"""
     for selector in selectors:
         content = soup.select(selector)
         if content:
             return content
     return []
 
-
-# 获取单个页面内容
 def get_single_page_content(url, selector_list, session):
+    """获取单个页面内容"""
     try:
-        headers = {
-            'User-Agent':
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Referer': 'https://www.3yt.org/'
-        }
+        headers = HEADERS
         response = session.get(url, headers=headers, timeout=15)
         response.encoding = 'utf-8'
         if response.status_code != 200:
@@ -53,13 +48,12 @@ def get_single_page_content(url, selector_list, session):
         soup = BeautifulSoup(response.text, 'html.parser')
         content = find_content(soup, selector_list)
         return soup, content
-    except Exception as e:
+    except ValueError as e:
         print(f"获取内容失败: {url}, 错误: {str(e)}")
         return None, None
 
-
-# 处理分页章节内容
 def process_pages(base_url, selector_list, session):
+    """处理分页章节内容"""
     all_content = []
     current_url = base_url
     page_count = 0
@@ -110,10 +104,44 @@ def process_pages(base_url, selector_list, session):
 
     return "\n\n".join(all_content)  # 合并所有分页内容
 
-
-# 获取章节完整内容（处理分页）
 def get_chapter_content(url, selector_list, session):
+    """获取章节内容（处理分页）"""
     soup, content = get_single_page_content(url, selector_list, session)
+    if not content:
+        return "[内容获取失败]"
+
+    # 改进分页检测逻辑
+    def has_pagination_indicator(soup):
+        # 检查是否有下一页文本
+        if soup.find(string=lambda s: s and any(
+                ind in s.strip().lower() for ind in ["下一页", "下页", "next"])):
+            return True
+
+        # 检查下一页按钮
+        next_buttons = soup.select(
+            'a[href*="page"], a[href*="next"], a[class*="next"]')
+        if next_buttons:
+            return True
+
+        # 检查页码控件
+        pagination = soup.select('.pagination, .page-links, .pager')
+        if pagination and len(pagination[0].find_all('a')) > 1:
+            return True
+
+        return False
+
+    # 检查是否需要分页
+    if has_pagination_indicator(soup):
+        print(f"检测到分页结构，开始处理: {url}")
+        return process_pages(url, selector_list, session)
+    return "\n".join([p.text for p in content])
+
+"""
+def get_chapter_content(url, selector_list, session):
+    获取章节内容（处理分页）
+    # 调用get_single_page_content函数，获取网页内容和soup对象
+    soup, content = get_single_page_content(url, selector_list, session)
+    # 如果内容为空，返回内容获取失败
     if not content:
         return "[内容获取失败]"
 
@@ -124,16 +152,12 @@ def get_chapter_content(url, selector_list, session):
         return process_pages(url, selector_list, session)
     else:
         return "\n".join([p.text for p in content])
+"""
 
-
-# 保存文件
-def getValueList(url, selector_list, session):
+def get_value_list(url, selector_list, session):
+    """获取所有章节链接"""
     try:
-        headers = {
-            'User-Agent':
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Referer': 'https://www.3yt.org/'
-        }
+        headers = HEADERS
 
         # 使用会话对象发送请求
         response = session.get(url, headers=headers, timeout=15)
@@ -154,38 +178,37 @@ def getValueList(url, selector_list, session):
         # 尝试多个选择器
         content = find_content(soup, selector_list)
         return content
-    except Exception as e:
+    except ValueError as e:
         print(f"获取内容失败: {url}, 错误: {str(e)}")
         return None
 
-
-def getAllValue(urlList, selector_list, base_url, session):
-
+def get_all_value(uril_list, selector_list, base_url, session):
+    """获取所有章节内容"""
     # 准备一些参数
     start_time = time.time()
     result = ""
-    zjName_list = []
+    chapter_name_list = []
 
     # 开始获取章节内容
-    for zjName in urlList:
-        if not zjName.get('href'):
-            print(f"章节缺少链接: {zjName.text}")
+    for chapter in uril_list:
+        if not chapter.get('href'):
+            print(f"章节缺少链接: {chapter.text}")
             continue
 
         # 构建完整URL
-        full_url = urljoin(base_url, zjName['href'])
-        if zjName.text not in zjName_list:
-            print(f"开始获取: {zjName.text} ({full_url})")
+        full_url = urljoin(base_url, chapter['href'])
+        if chapter.text not in chapter_name_list:
+            print(f"开始获取: {chapter.text} ({full_url})")
 
             # 获取章节内容（包含分页处理）
             content = get_chapter_content(full_url, selector_list, session)
-            result += f"{zjName.text}\n{content}\n\n"
+            result += f"{chapter.text}\n{content}\n\n"
 
             # 保存章节名字避免重复获取
-            zjName_list.append(zjName.text)
-            print(f"完成获取: {zjName.text}")
+            chapter_name_list.append(chapter.text)
+            print(f"完成获取: {chapter.text}")
         else:
-            print(f"章节已获取，跳过: {zjName.text}")
+            print(f"章节已获取，跳过: {chapter.text}")
 
         # # 获取内容
         # content = getValueList(full_url, selector_list, session)
@@ -208,12 +231,11 @@ def getAllValue(urlList, selector_list, base_url, session):
 
     return result
 
-
-def saveFile(fileName, fileValue):
-    with open(fileName, 'w', encoding="utf-8") as f:  # 改用覆盖写入
-        f.write(fileValue)
-    print(f"文件已保存: {fileName}")
-
+def save_file(file_name, file_value):
+    """保存文件"""
+    with open(file_name, 'w', encoding="utf-8") as f:  # 改用覆盖写入
+        f.write(file_value)
+    print(f"文件已保存: {file_name}")
 
 # 文本格式化函数：根据标点符号进行合理换行
 def format_text(text):
@@ -254,6 +276,7 @@ def format_text(text):
     return formatted.strip()
 
 def main():
+    """开始爬虫内容"""
     # 主URL和基础URL
     # url = "https://www.3yt.org/ml/94328"  # 快穿系统之反派BOSS来袭
     # url = "https://www.3yt.org/ml/63543"  # 快穿：男神，有点燃
@@ -275,25 +298,25 @@ def main():
     session = create_session()
 
     # 获取目录列表
-    urlList = getValueList(url, ['dd > a'], session)
-    if not urlList:
+    uril_list = get_value_list(url, ['dd > a'], session)
+    if not uril_list:
         print("目录获取失败！")
         return
 
     # 获取所有章节
     start_time = time.time()
-    jzValue = getAllValue(urlList, selector_list, base_url, session)
+    chapter_value = get_all_value(uril_list, selector_list, base_url, session)
     end_time = time.time()
     deplete_time = end_time - start_time
     print(f"获取所有章节总耗时: {deplete_time:.2f} 秒")
     print(f"获取所有章节总字数: {deplete_time / 60:.2f} 分钟")
 
     # 格式化文本
-    jzValue = format_text(jzValue)
+    chapter_value = format_text(chapter_value)
 
     # 保存结果
-    if jzValue:
-        saveFile("健身教练！.txt", jzValue)
+    if chapter_value:
+        save_file("健身教练！.txt", chapter_value)
     else:
         print("未获取到任何章节内容！")
 
