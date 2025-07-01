@@ -262,6 +262,10 @@
     https://loguru.readthedocs.io/en/stable/api.html
     
 ## DAY45     2025.7.1
+### 使用pylint优化了books代码
+### 联合Deepseek写了books的单元测试
+### 搞点爬虫书和视频看看然后联系单元测试
+
 ## DAY46     2025.7.2
 ## DAY47     2025.7.3
 ## DAY48     2025.7.4
