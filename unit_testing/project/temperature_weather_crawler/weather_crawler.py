@@ -130,9 +130,9 @@ def get_weather_for_bugs():
         time.sleep(2)
 
         # 如果月份大于12了，就重置月份并且结束这次循环，开始下一年份的循环，否则月份加一
-        if years > max_year:
+        if years == max_year and months == max_month:
             break
-        if months == max_month:
+        elif months == max_month:
             print(f'数据{years}获取完成，重置months并且years+1......')
             months = 1
             years += 1
@@ -174,14 +174,14 @@ def date_visualization():
         high_temp = df['最高温度'].tolist()
         low_temp = df['最低温度'].tolist()
 
-        line_chart = (Line().add_xaxis(date).add_yaxis(
-            "最高温度", high_temp,
-            areastyle_opts=opts.AreaStyleOpts(opacity=0.5)).add_yaxis(
-                "最低温度",
-                low_temp,
-                areastyle_opts=opts.AreaStyleOpts(
-                    opacity=0.5)).set_global_opts(title_opts=opts.TitleOpts(
-                        title="昆山温度折线图")))
+        line_chart = (Line().add_xaxis(date)
+                      .add_yaxis("最高温度", high_temp,
+                                areastyle_opts=opts.AreaStyleOpts(opacity=0.5))
+                      .add_yaxis("最低温度",low_temp,
+                                areastyle_opts=opts.AreaStyleOpts(opacity=0.5))
+                      .add_yaxis("平均气温", (df['最高温度'] + df['最低温度']) / 2,
+                                linestyle_opts=opts.LineStyleOpts(width=2, type_="dashed"))
+                      .set_global_opts(title_opts=opts.TitleOpts(title="昆山温度折线图")))
 
         # 渲染为HTML文件
         output_file = "KS_Temperature_Line_Chart.html"
