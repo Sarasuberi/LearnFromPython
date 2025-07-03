@@ -8,9 +8,8 @@
         DAY 31-36 Python单元测试：https://space.bilibili.com/3461574561892826/lists/935382
 
     ~~Deepseek推荐视频~~
-       ~~ DAY 37 B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC~~
+       ~~DAY 37 B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC~~
     这个合集有毒
-
 
 ## DAY1      2025.5.18
 ### 1 Python的语法
@@ -264,14 +263,15 @@
 ## DAY45     2025.7.1
 ### 使用pylint优化了books代码
 ### 联合Deepseek写了books的单元测试
-### 搞点爬虫书和视频看看然后联系单元测试
+### 搞点爬虫书和视频看看然后练习单元测试
 
 ## DAY46     2025.7.2
 ### 跟着B站视频学习了爬取天气数据的程序
-    ``https://www.bilibili.com/video/BV1PWjBzuEmQ/``
+    https://www.bilibili.com/video/BV1PWjBzuEmQ/
 
 ## DAY47     2025.7.3
-### 尝试对昨天已完成的程序写个单元测试
+### numpy 100道练习题
+    https://www.bilibili.com/video/BV1HsKPz5Eta
 
 ## DAY48     2025.7.4
 ## DAY49     2025.7.5
