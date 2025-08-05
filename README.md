@@ -7,6 +7,11 @@
         DAY 24-29 高级Python编程知识：https://space.bilibili.com/3461574561892826/lists/895263
         DAY 31-36 Python单元测试：https://space.bilibili.com/3461574561892826/lists/935382
 
+    up主：莲花君-
+        B站地址：https://space.bilibili.com/1957012799/
+        numpy篇：https://space.bilibili.com/1957012799/lists/4780439?type=series
+        pandas篇：https://space.bilibili.com/1957012799/lists/4793974?type=series
+        matplotilb、seaborn（可视化）
     ~~Deepseek推荐视频~~
        ~~DAY 37 B站地址：https://www.bilibili.com/video/BV1BMk2YGEdC~~
     这个合集有毒
@@ -283,8 +288,8 @@
 ## DAY55     2025.7.11
 ## DAY56     2025.7.12
 ## DAY57     2025.7.13
-### 添加一个numpy和pandas的学习视频UP地址
-    https://space.bilibili.com/1957012799/
+### pandas 80道练习题
+    https://www.bilibili.com/video/BV1PytGezEr5
 
 ## DAY58     2025.7.14
 ## DAY59     2025.7.15
@@ -303,6 +308,9 @@
 ## DAY70     2025.7.26
 ## DAY71     2025.7.27
 ## DAY72     2025.7.28
+### 找点爬虫视频看看
+    https://space.bilibili.com/1942759747
+    
 ## DAY73     2025.7.29
 ## DAY74     2025.7.30
 ## DAY75     2025.7.31
