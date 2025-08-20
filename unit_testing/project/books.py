@@ -12,7 +12,7 @@ HEADERS = {
             'User-Agent':
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64)\
                 AppleWebKit/537.36 (KHTML, like Gecko)\
-                Chrome/91.0.4472.124 Safari/537.36',
+                Chrome/91.0.4472.124 Safari/537.36'                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ,
             'Referer': 'https://www.3yt.org/'
         }
 
@@ -175,9 +175,22 @@ def get_value_list(url, selector_list, session):
         #           encoding="utf-8") as f:
         #     f.write(response.text)
 
-        # 尝试多个选择器
+        chapter_links = []
+        found_first_chapter = False
+
+        # 通过选择器筛选章节链接
         content = find_content(soup, selector_list)
-        return content
+
+        # 找到第一章开始保存链接
+        for title in content:
+            if not found_first_chapter :
+                if re.match(r"^第1章", title.text):
+                    found_first_chapter = True
+                    chapter_links.append(title)
+            else:
+                chapter_links.append(title)
+
+        return chapter_links
     except ValueError as e:
         print(f"获取内容失败: {url}, 错误: {str(e)}")
         return None
@@ -238,51 +251,54 @@ def save_file(file_name, file_value):
     print(f"文件已保存: {file_name}")
 
 # 文本格式化函数：根据标点符号进行合理换行
-def format_text(text):
+def format_text(content):
     """
-    根据中文标点符号进行格式化换行
-    处理规则：
-    1. 在句尾标点（。！？）后换行
-    2. 在右引号」"）后换行
-    3. 保留原有的段落换行
-    4. 合并多余的空行
+    格式化小说文本：在句末标点后添加换行，智能处理连续标点
+    :param content: 原始文本内容（无换行符）
+    :return: 格式化后的文本
     """
-    if not text:
-        return ""
 
-    # 第一步：在标准标点后添加换行
-    formatted = re.sub(r'([。！？…”」])("?"?)\s*', r'\1\2\n', text)
+    # 步骤1: 处理复杂连续标点（包含混合标点的情况）
+    def replace_complex_punctuation(match):
+        """处理??, !?等连续混合标点"""
+        puncs = match.group(0)
+        # 当连续标点中有混合类型时，只在最后一个标点后换行
+        if len(set(puncs)) > 1:  # 检查是否有多种标点
+            return puncs[:-1] + f"{puncs[-1]}\n"
+        return f"{puncs}\n"  # 同类型标点整体换行
 
-    # 第二步：处理特殊的标点组合
-    # 处理 。" 组合
-    formatted = re.sub(r'。"\n', '。"\n\n', formatted)
-    # 处理 ！" 组合
-    formatted = re.sub(r'！"\n', '！"\n\n', formatted)
-    # 处理 ？" 组合
-    formatted = re.sub(r'？"\n', '？"\n\n', formatted)
+    # 处理复杂连续标点（???!、？！?等）
+    content = re.sub(r'([？?!！。】]{2,})', replace_complex_punctuation, content)
 
-    # 第三步：合并多个连续换行
-    formatted = re.sub(r'\n{3,}', '\n\n', formatted)
+    # 步骤2: 处理单个句末标点和简单连续标点
+    content = re.sub(r'([。？！！？])(?=[^”？\]」！。？！])', r'\1\n', content)
 
-    # 第四步：确保章节标题后的空行
-    # 在章节标题后添加一个空行（如果还没有）
-    formatted = re.sub(r'(\n第[^章节]*[章节]\s*.*?)\n(\s*\n)*', r'\1\n\n',
-                       formatted)
+    # 步骤3: 特殊情况处理 - 引号、括号后的标点
+    # 中文引号/括号后跟标点：在标点后换行
+    content = re.sub(r'([”’\]」》】])([。？！；]|(?:[！？]{1,2}))', r'\1\2\n', content)
 
-    # 第五步：处理对话格式
-    # 确保对话前有空行
-    formatted = re.sub(r'(\n)([「"])(.*?)([」"])\n', r'\1\n\2\3\4\n', formatted)
+    # 步骤4: 处理段落开头特殊字符
+    # 移除可能出现在行首的空格
+    content = re.sub(r'\n\s+', '\n', content)
 
-    return formatted.strip()
+    # 步骤5: 处理多余的空行
+    content = re.sub(r'\n{3,}', '\n\n', content)
+
+    # 步骤6：匹配章节名称前后换行
+    chapter_pattern = r'(\n第[^章节]*[章节]\s*.*?)\n(\s*\n)*'
+    content = re.sub(chapter_pattern, r'\n\1\n\n', content)
+
+    return content
 
 def main():
     """开始爬虫内容"""
     # 主URL和基础URL
-    # url = "https://www.3yt.org/ml/94328"  # 快穿系统之反派BOSS来袭
-    # url = "https://www.3yt.org/ml/63543"  # 快穿：男神，有点燃
-    # url = "https://www.3yt.org/ml/172981" # 欢迎来到我的地域
-    # url = "https://www.3yt.org/ml/87750/" # 快穿女配：反派BOSS有毒
-    url = "https://www.3yt.org/ml/268476/"
+    # url = "https://www.3yt.org/ml/87750/"     # 快穿女配：反派BOSS有毒    时笙
+    url = "https://www.3yt.org/ml/94328"  # 快穿系统之反派BOSS来袭    明姝
+    # url = "https://www.3yt.org/ml/37642/"     # 这个大佬画风不对          初筝
+    # url = "https://www.3yt.org/ml/114229/"    # 十万个氪金的理由          灵琼
+    # url = "https://www.3yt.org/ml/172981"     # 欢迎来到我的地域          银苏
+    # url = "https://www.3yt.org/ml/268476/"
     base_url = url.rsplit('/', 1)[0] + '/'  # 获取基础URL
 
     # 备用选择器列表
